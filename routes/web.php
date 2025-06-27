@@ -456,6 +456,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminEmailNotificationsController::class)
                 ->group(function () {
                     Route::get('/email/notifications', 'index')->name('email.notifications');
+                    Route::post('email/broadcast', 'broadcast')->name('email.broadcast');
                 });
         });
 });
