@@ -443,7 +443,7 @@
                                                                         </td>
 
                                                                         <td data-label="Action">
-                                                                            <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                            <a href="{{ route('admin.deposits.show', $deposit->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                             <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteDeposit({{ $deposit->id }})">Delete</button>
                                                                         </td>
                                                                     </tr>

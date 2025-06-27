@@ -37,12 +37,11 @@
 
                             <div style="padding-bottom: 40px; font-family: Poppins, Helvetica, sans-serif;">
                                 <div style="margin-bottom: 20px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; text-align: center;">
-                                    <h2 style="margin: 0 0 10px 0; font-size: 24px;">📩 {{ $email_subject }}</h2>
-                                    <p style="margin: 0; font-size: 16px;">We’ve got an update for you!</p>
+                                    <h2 style="margin: 0 0 10px 0; font-size: 24px;">{{ $email_subject }}</h2>
                                 </div>
 
                                 <p style="margin-bottom: 20px; white-space: pre-line;">
-                                    {!! nl2br(e($email_content)) !!}
+                                    {!! $email_content !!}
                                 </p>
 
                                 <p>

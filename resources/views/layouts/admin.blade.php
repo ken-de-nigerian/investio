@@ -101,7 +101,7 @@
             <script src="{{ asset('assets/js/upload-profile-picture.js') }}"></script>
         @endif
 
-        @if (Route::is('admin.users.show'))
+        @if (Route::is('admin.users.show') || Route::is('admin.deposits'))
             <script src="{{ asset('assets/js/admin-manage-users.js') }}"></script>
         @endif
 

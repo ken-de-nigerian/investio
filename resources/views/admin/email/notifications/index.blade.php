@@ -35,21 +35,21 @@
                                         <div class="col-md-12">
                                             <div class="form-floating mb-4">
                                                 <input type="text" class="form-control rounded-4 @error('subject') is-invalid @enderror" id="subject" name="subject" autofocus value="{{ old('subject') }}">
-                                                <div class="invalid-feedback">Email subject is required.</div>
-                                                <label for="subject">Email Subject</label>
+                                                <div class="invalid-feedback">Subject is required.</div>
+                                                <label for="subject">Subject</label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 mb-4">
                                             <div id="editor">{!! old('message') !!}</div>
                                             <input type="hidden" name="message" id="details" value="{{ old('message') }}">
-                                            <div class="invalid-feedback">Email content is required.</div>
+                                            <div class="invalid-feedback">Content is required.</div>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <button type="submit" id="sendEmailBtn" class="btn btn-theme w-100 rounded-4">Send Email to All Users</button>
+                                            <button type="submit" id="sendEmailBtn" class="btn btn-theme w-100 rounded-4">Send Email</button>
                                         </div>
                                     </div>
                                 </form>
@@ -85,7 +85,7 @@
 
             // Validate inputs
             let isValid = true;
-            const fields = ['email_subject', 'details'];
+            const fields = ['subject', 'details'];
 
             fields.forEach(fieldId => {
                 const input = document.getElementById(fieldId);

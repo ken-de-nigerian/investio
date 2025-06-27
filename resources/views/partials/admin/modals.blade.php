@@ -28,6 +28,77 @@
     </div>
 @endif
 
+@if(Route::is('admin.deposits') || Route::is('admin.deposits.show') || Route::is('admin.users.show'))
+    <!-- Approve Deposit Modal -->
+    <div class="modal adminuiux-modal fade" id="approveDepositModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approveDepositModalLabel">Confirm Deposit Approval</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to approve this deposit? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="approveDepositForm" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="btn btn-danger">Approve</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Deposit Modal -->
+    <div class="modal adminuiux-modal fade" id="rejectDepositModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectDepositModalLabel">Confirm Deposit Rejection</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to reject this deposit? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="rejectDepositForm" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Deposit Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteDepositModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteDepositModalLabel">Confirm Deposit Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this deposit? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteDepositForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 @if(Route::is('admin.users.show'))
     <!-- Manage Funds Modal -->
     <div class="modal adminuiux-modal fade" id="fundsModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="fundsModalLabel" aria-hidden="true">
@@ -159,29 +230,6 @@
                         <button type="submit" class="btn btn-danger">Block Account</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Deposit Modal -->
-    <div class="modal adminuiux-modal fade" id="deleteDepositModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog rounded-6">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteDepositModalLabel">Confirm Deposit Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this deposit? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteDepositForm" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

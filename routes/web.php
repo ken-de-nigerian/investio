@@ -353,8 +353,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                     Route::get('/deposits/{deposit}/edit', 'edit')->name('deposits.edit');
                     Route::post('/deposits/{deposit}/update', 'update')->name('deposits.update');
                     Route::delete('/deposits/{deposit}/delete', 'destroy')->name('deposits.delete');
-                    Route::post('/deposits/{deposit}/approve', 'approve')->name('deposits.approve');
-                    Route::post('/deposits/{deposit}/reject', 'reject')->name('deposits.reject');
+                    Route::patch('/deposits/{deposit}/approve', 'approve')->name('deposits.approve');
+                    Route::patch('/deposits/{deposit}/reject', 'reject')->name('deposits.reject');
                 });
 
             // Interbank transfers

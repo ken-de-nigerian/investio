@@ -118,7 +118,7 @@ class WalletController extends Controller
         $request->validate([
             'amount' => 'required|numeric|min:0',
             'method' => 'required|string|max:255',
-            'convertedAmount' => 'required|string|min:0',
+            'convertedAmount' => 'required|numeric|min:0',
         ]);
 
         try {

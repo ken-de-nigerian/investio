@@ -35,7 +35,7 @@ class FundsManagedConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Fund ' . ucfirst($this->type) . ' Confirmation',
+            subject: ucfirst(str_replace('_', ' ', $this->type)) . ' Confirmation',
         );
     }
 

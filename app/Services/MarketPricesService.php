@@ -127,9 +127,13 @@ class MarketPricesService
                 if (isset($data[$firstKey][$targetCurrencyLower])) {
                     $rate = $data[$firstKey][$targetCurrencyLower];
                     $converted = $amount > 0 ? $amount * $rate : 0;
+
+                    $formatted = number_format($converted, 6);
+                    $number = floatval(str_replace(',', '', $formatted));
+
                     return [
                         'status' => 'success',
-                        'converted' => number_format($converted, 6),
+                        'converted' => $number,
                         'source' => 'CoinGecko'
                     ];
                 }
@@ -164,9 +168,13 @@ class MarketPricesService
                 if (isset($data['data']['quote'][$targetCurrencyUpper]['price'])) {
                     $rate = $data['data']['quote'][$targetCurrencyUpper]['price'];
                     $converted = $amount > 0 ? $amount * $rate : 0;
+
+                    $formatted = number_format($converted, 6);
+                    $number = floatval(str_replace(',', '', $formatted));
+
                     return [
                         'status' => 'success',
-                        'converted' => number_format($converted, 6),
+                        'converted' => $number,
                         'source' => 'CoinMarketCap'
                     ];
                 }

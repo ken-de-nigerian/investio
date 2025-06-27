@@ -6,14 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Mail\UserEmailConfirmation;
 use App\Models\User;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class AdminEmailNotificationsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display email notifications index.
+     *
+     * @return View
      */
     public function index()
     {
@@ -23,7 +27,10 @@ class AdminEmailNotificationsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Send email to all users.
+     *
+     * @param Request $request
+     * @return JsonResponse
      */
     public function broadcast(Request $request)
     {
@@ -34,8 +41,10 @@ class AdminEmailNotificationsController extends Controller
 
         try {
 
-            // Get all users with email addresses
-            $users = User::whereNotNull('email')->get();
+            // Get all none admin users with email addresses
+            $users = User::whereNotNull('email')
+                ->where('role', '!=', 'admin')
+                ->get();
 
             if ($users->isEmpty()) {
                 return response()->json([
