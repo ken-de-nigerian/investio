@@ -12,7 +12,9 @@ class AdminEmailNotificationsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.email.notifications.index', [
+            'title' => 'Account - Notifications',
+        ]);
     }
 
     /**

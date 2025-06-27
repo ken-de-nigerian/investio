@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/create-goal.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/responsive-table.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons/bootstrap-icons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/quill.snow.css') }}">
 
         <!-- Styles -->
         @stack('styles')
@@ -102,6 +103,11 @@
 
         @if (Route::is('admin.users.show'))
             <script src="{{ asset('assets/js/admin-manage-users.js') }}"></script>
+        @endif
+
+        @if (Route::is('admin.email.notifications'))
+            <script src="{{ asset('assets/js/quill.js') }}"></script>
+            <script src="{{ asset('assets/js/quill-editor.js') }}"></script>
         @endif
 
         <script src="{{ asset('assets/js/cleave.min.js') }}"></script>

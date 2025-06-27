@@ -90,22 +90,22 @@
                                 <i class="bi bi-person"></i>
                             </div>
 
-                            <div class="bg-dark border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
+                            <div class="bg-primary border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
                                  style="width: 40px; height: 40px; z-index: 2;" id="step2">
                                 <i class="bi bi-card-text text-muted"></i>
                             </div>
 
-                            <div class="bg-dark border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
+                            <div class="bg-primary border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
                                  style="width: 40px; height: 40px; z-index: 2;" id="step3">
                                 <i class="bi bi-geo-alt text-muted"></i>
                             </div>
 
-                            <div class="bg-dark border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
+                            <div class="bg-primary border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
                                  style="width: 40px; height: 40px; z-index: 2;" id="step4">
                                 <i class="bi bi-briefcase text-muted"></i>
                             </div>
 
-                            <div class="bg-dark border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
+                            <div class="bg-primary border border-2 rounded-circle d-flex align-items-center justify-content-center position-relative"
                                  style="width: 40px; height: 40px; z-index: 2;" id="step5">
                                 <i class="bi bi-eye text-muted"></i>
                             </div>
@@ -709,15 +709,15 @@
                         }
                     } else {
                         // Future step
-                        stepElement.classList.add('bg-dark', 'border', 'border-2');
-                        icon.classList.add('text-muted');
+                        stepElement.classList.add('bg-primary', 'border', 'border-2');
+                        icon.classList.add('text-white');
                         // Keep original icon
                         switch(i) {
-                            case 1: icon.className = 'bi bi-person text-muted'; break;
-                            case 2: icon.className = 'bi bi-card-text text-muted'; break;
-                            case 3: icon.className = 'bi bi-geo-alt text-muted'; break;
-                            case 4: icon.className = 'bi bi-briefcase text-muted'; break;
-                            case 5: icon.className = 'bi bi-eye text-muted'; break;
+                            case 1: icon.className = 'bi bi-person text-white'; break;
+                            case 2: icon.className = 'bi bi-card-text text-white'; break;
+                            case 3: icon.className = 'bi bi-geo-alt text-white'; break;
+                            case 4: icon.className = 'bi bi-briefcase text-white'; break;
+                            case 5: icon.className = 'bi bi-eye text-white'; break;
                         }
                     }
                 }
