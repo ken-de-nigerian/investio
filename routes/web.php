@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDepositsController;
 use App\Http\Controllers\Admin\AdminDomesticTransferController;
+use App\Http\Controllers\Admin\AdminEmailNotificationsController;
 use App\Http\Controllers\Admin\AdminGoalController;
 use App\Http\Controllers\Admin\AdminInterBankTransferController;
 use App\Http\Controllers\Admin\AdminInvestmentController;
@@ -295,10 +296,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::controller(AdminDashboardController::class)
         ->middleware(['auth', 'can:access-admin-dashboard'])
         ->group(function () {
-            // Dashboard
+            // Dashboard home
             Route::get('/dashboard', 'index')->name('dashboard');
 
-            // Account Profile
+            // Admin profile management
             Route::get('/profile', 'profilePage')->name('profile');
             Route::patch('/profile', 'updateProfile')->name('profile.update');
             Route::post('/profile/account-details', 'updateAccountDetails')->name('profile.account.details.update');
@@ -306,159 +307,124 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::delete('/picture/remove', 'removeProfilePicture')->name('picture.remove');
             Route::patch('/password/update', 'updatePassword')->name('password.update');
 
-            // Referrals
+            // Referrals management
             Route::controller(AdminReferralsController::class)
                 ->group(function () {
                     Route::get('/referrals', 'index')->name('referrals');
                 });
 
-            // Users
-            Route::controller(AdminUserController::class)->group(function (){
+            // User management
+            Route::controller(AdminUserController::class)->group(function () {
                 Route::get('/users', 'index')->name('users');
-
                 Route::get('/users/create', 'create')->name('users.create');
                 Route::post('/users/store', 'store')->name('users.store');
-
                 Route::get('/users/{user}/show', 'show')->name('users.show');
                 Route::get('/users/{user}/edit', 'edit')->name('users.edit');
-
                 Route::patch('/users/{user}/update', 'update')->name('users.update');
                 Route::post('/users/{user}/account-details', 'updateAccountDetails')->name('users.account.details.update');
                 Route::post('/users/{user}/picture/update', 'updateProfilePicture')->name('users.picture.update');
                 Route::delete('/users/{user}/picture/remove', 'removeProfilePicture')->name('users.picture.remove');
-
                 Route::post('/users/{user}/funds', 'manageFunds')->name('users.funds');
-
                 Route::post('/users/{user}/email', 'sendEmail')->name('users.email');
-
                 Route::post('/users/{user}/reset-password', 'resetPassword')->name('users.reset-password');
                 Route::post('/users/{user}/block', 'block')->name('users.block');
                 Route::delete('/users/{user}/delete', 'delete')->name('users.delete');
-
                 Route::post('/users/{user}/login', 'loginAsUser')->name('users.login');
-
                 Route::post('/users/{user}/card/store', 'cardStore')->name('users.card.store');
             });
 
-            // Kyc Verification
+            // KYC verification
             Route::controller(AdminKycController::class)
                 ->group(function () {
                     Route::get('/kyc', 'index')->name('kyc');
-
                     Route::post('/kyc/{kyc}/approve', 'approve')->name('kyc.approve');
                     Route::post('/kyc/{kyc}/reject', 'reject')->name('kyc.reject');
-
                     Route::get('/kyc/modal/{kyc}', 'modal')->name('admin.kyc.modal');
                 });
 
-            // Deposits
+            // Deposit management
             Route::controller(AdminDepositsController::class)
                 ->group(function () {
                     Route::get('/deposits', 'index')->name('deposits');
                     Route::get('/deposits/methods', 'methods')->name('deposits.methods');
-
                     Route::get('/deposits/alert', 'create')->name('deposits.alert');
                     Route::post('/deposits', 'store')->name('deposits.store');
-
                     Route::get('/deposits/{deposit}/show', 'show')->name('deposits.show');
                     Route::get('/deposits/{deposit}/edit', 'edit')->name('deposits.edit');
-
                     Route::post('/deposits/{deposit}/update', 'update')->name('deposits.update');
                     Route::delete('/deposits/{deposit}/delete', 'destroy')->name('deposits.delete');
-
                     Route::post('/deposits/{deposit}/approve', 'approve')->name('deposits.approve');
                     Route::post('/deposits/{deposit}/reject', 'reject')->name('deposits.reject');
                 });
 
-            // Interbank Transfer
+            // Interbank transfers
             Route::controller(AdminInterBankTransferController::class)
                 ->group(function () {
                     Route::get('/interbank', 'index')->name('interbank');
-
                     Route::get('/interbank/create', 'create')->name('interbank.create');
                     Route::post('/interbank', 'store')->name('interbank.store');
-
                     Route::get('/interbank/{interbank}/show', 'show')->name('interbank.show');
                     Route::get('/interbank/{interbank}/edit', 'edit')->name('interbank.edit');
-
                     Route::post('/interbank/{interbank}/update', 'update')->name('interbank.update');
                     Route::delete('/interbank/{interbank}/delete', 'destroy')->name('interbank.delete');
-
                     Route::post('/interbank/{interbank}/approve', 'approve')->name('interbank.approve');
                     Route::post('/interbank/{interbank}/reject', 'reject')->name('interbank.reject');
                 });
 
-            // Domestic Transfers
+            // Domestic transfers
             Route::controller(AdminDomesticTransferController::class)
                 ->group(function () {
                     Route::get('/domestic', 'index')->name('domestic');
-
                     Route::get('/domestic/create', 'create')->name('domestic.create');
                     Route::post('/domestic', 'store')->name('domestic.store');
-
                     Route::get('/domestic/{domestic}/show', 'show')->name('domestic.show');
                     Route::get('/domestic/{domestic}/edit', 'edit')->name('domestic.edit');
-
                     Route::post('/domestic/{domestic}/update', 'update')->name('domestic.update');
                     Route::delete('/domestic/{domestic}/delete', 'destroy')->name('domestic.delete');
-
                     Route::post('/domestic/{domestic}/approve', 'approve')->name('domestic.approve');
                     Route::post('/domestic/{domestic}/reject', 'reject')->name('domestic.reject');
                 });
 
-            // Wire Transfers
+            // Wire transfers
             Route::controller(AdminWireTransferController::class)
                 ->group(function () {
                     Route::get('/wire', 'index')->name('wire');
-
                     Route::get('/wire/create', 'create')->name('wire.create');
                     Route::post('/wire', 'store')->name('wire.store');
-
                     Route::get('/wire/{wire}/show', 'show')->name('wire.show');
                     Route::get('/wire/{wire}/edit', 'edit')->name('wire.edit');
-
                     Route::post('/wire/{wire}/update', 'update')->name('wire.update');
                     Route::delete('/wire/{wire}/delete', 'destroy')->name('wire.delete');
-
-                    Route::post('/wire/{wire}/approve', 'approve')->name('wire.approve');
+                    Route::post('/wire/{wire}/reject', 'approve')->name('wire.approve');
                     Route::post('/wire/{wire}/reject', 'reject')->name('wire.reject');
                 });
 
-            // Loan Financing
+            // Loan financing
             Route::controller(AdminLoanController::class)
                 ->group(function () {
                     Route::get('/loans', 'index')->name('loans');
-
                     Route::get('/loans/create', 'create')->name('loan.create');
                     Route::post('/loans/store', 'store')->name('loan.store');
-
                     Route::get('/loans/{loan}/show', 'show')->name('loan.show');
                     Route::get('/loans/{loan}/edit', 'edit')->name('loan.edit');
-
                     Route::post('/loans/{loan}/update', 'update')->name('loan.update');
                     Route::delete('/loans/{loan}/delete', 'destroy')->name('loan.delete');
-
                     Route::post('/loans/{loan}/approve', 'approve')->name('loan.approve');
                     Route::post('/loans/{loan}/reject', 'reject')->name('loan.reject');
                 });
 
-            // Goals & Savings
+            // Goals & savings
             Route::controller(AdminGoalController::class)
                 ->group(function () {
                     Route::get('/goals', 'index')->name('goals');
-
                     Route::get('/goals/categories', 'categories')->name('goal.categories');
                     Route::post('/goals/categories/store', 'storeCategories')->name('goals.categories.store');
-
                     Route::get('/goals/create', 'create')->name('goal.create');
                     Route::post('/goals', 'store')->name('goal.store');
-
                     Route::get('/goals/{goal}/show', 'show')->name('goal.show');
                     Route::get('/goals/{goal}/edit', 'edit')->name('goal.edit');
-
                     Route::post('/goals/{goal}/update', 'update')->name('goal.update');
                     Route::delete('/goals/{goal}/delete', 'destroy')->name('goal.delete');
-
                     Route::post('/goals/{goal}/approve', 'approve')->name('goal.approve');
                     Route::post('/goals/{goal}/reject', 'reject')->name('goal.reject');
                 });
@@ -467,19 +433,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminInvestmentController::class)
                 ->group(function () {
                     Route::get('/investments', 'index')->name('investments');
-
                     Route::get('/investments/plans', 'plans')->name('investment.plans');
-                    Route::post('/investments/plans/categories/store', 'storePlanCategories')->name('investment.plans.categories.store');
-
+                    Route::get('/investments/categories', 'planCategories')->name('investment.categories');
+                    Route::post('/investments/categories/store', 'storePlanCategories')->name('investment.categories.store');
                     Route::get('/investments/create', 'create')->name('investment.create');
                     Route::post('/investments', 'store')->name('investment.store');
-
                     Route::get('/investments/{investment}/show', 'show')->name('investment.show');
-                    Route::get('/investments/{investment}/edit', 'edit')->name('loan.edit');
-
+                    Route::get('/investments/{investment}/edit', 'edit')->name('investment.edit');
                     Route::post('/investments/{investment}/update', 'update')->name('investment.update');
                     Route::delete('/investments/{investment}/delete', 'destroy')->name('investment.delete');
-
                     Route::post('/investments/{investment}/approve', 'approve')->name('investment.approve');
                     Route::post('/investments/{investment}/reject', 'reject')->name('investment.reject');
                 });
@@ -488,6 +450,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminTransactionsController::class)
                 ->group(function () {
                     Route::get('/transactions', 'index')->name('transactions');
+                });
+
+            // Email notifications
+            Route::controller(AdminEmailNotificationsController::class)
+                ->group(function () {
+                    Route::get('/email/notifications', 'index')->name('email.notifications');
                 });
         });
 });

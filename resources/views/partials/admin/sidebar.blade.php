@@ -41,21 +41,21 @@
                 </a>
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.users') }}" class="nav-link {{ isActive('admin.users') }}">
+                        <a href="{{ route('admin.users') }}" class="nav-link">
                             <i class="menu-icon bi bi-person"></i>
                             <span class="menu-name">Overview</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.users.create') }}" class="nav-link {{ isActive('admin.users.create') }}">
+                        <a href="{{ route('admin.users.create') }}" class="nav-link">
                             <i class="menu-icon bi bi-person-add"></i>
                             <span class="menu-name">Create Users</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.email.notifications') }}" class="nav-link">
                             <i class="menu-icon bi bi-envelope-at"></i>
                             <span class="menu-name">Email Notifications</span>
                         </a>
@@ -66,27 +66,27 @@
             <!-- Deposits Dropdown -->
             <li class="nav-item dropdown">
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.deposits.*') }}" data-bs-toggle="dropdown">
-                    <i class="menu-icon bi bi-cash"></i>
+                    <i class="menu-icon bi bi-wallet2"></i>
                     <span class="menu-name">Deposits</span>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits') }}" class="nav-link {{ isActive('admin.deposits') }}">
+                        <a href="{{ route('admin.deposits') }}" class="nav-link">
                             <i class="menu-icon bi bi-bar-chart"></i>
                             <span class="menu-name">Overview</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.alert') }}" class="nav-link {{ isActive('admin.deposits.alert') }}">
+                        <a href="{{ route('admin.deposits.alert') }}" class="nav-link">
                             <i class="menu-icon bi bi-currency-exchange"></i>
                             <span class="menu-name">Credit | Debit</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.methods') }}" class="nav-link {{ isActive('admin.deposits.methods') }}">
+                        <a href="{{ route('admin.deposits.methods') }}" class="nav-link">
                             <i class="menu-icon bi bi-credit-card"></i>
                             <span class="menu-name">Payment Methods</span>
                         </a>
@@ -97,7 +97,7 @@
             <!-- Goals & Savings Dropdown -->
             <li class="nav-item dropdown">
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.goals.*') }}" data-bs-toggle="dropdown">
-                    <i class="menu-icon bi bi-arrow-left-right"></i>
+                    <i class="menu-icon bi bi-tags"></i>
                     <span class="menu-name">Goals & Savings</span>
                 </a>
 
@@ -135,21 +135,21 @@
 
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits') }}" class="nav-link {{ isActive('admin.deposits') }}">
+                        <a href="{{ route('admin.interbank') }}" class="nav-link">
                             <i class="menu-icon bi bi-bank"></i>
                             <span class="menu-name">Interbank Transfer</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.alert') }}" class="nav-link {{ isActive('admin.deposits.alert') }}">
+                        <a href="{{ route('admin.domestic') }}" class="nav-link">
                             <i class="menu-icon bi bi-calendar-event"></i>
                             <span class="menu-name">Domestic Transfer</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.methods') }}" class="nav-link {{ isActive('admin.deposits.methods') }}">
+                        <a href="{{ route('admin.wire') }}" class="nav-link">
                             <i class="menu-icon bi bi-globe-americas"></i>
                             <span class="menu-name">Wire Transfer</span>
                         </a>
@@ -179,27 +179,19 @@
                     </div>
 
                     <div class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.investment.categories') }}" class="nav-link">
                             <i class="menu-icon bi bi-briefcase"></i>
-                            <span class="menu-name">My Portfolio</span>
+                            <span class="menu-name">Categories</span>
                         </a>
                     </div>
                 </div>
-            </li>
-
-            <!-- Statistics -->
-            <li class="nav-item">
-                <a href="" class="nav-link">
-                    <i class="menu-icon bi bi-bar-chart"></i>
-                    <span class="menu-name">Statistics</span>
-                </a>
             </li>
 
             <!-- My Transactions -->
             <li class="nav-item">
                 <a href="{{ route('admin.transactions') }}" class="nav-link {{ isActive('admin.transactions') }}">
                     <i class="menu-icon bi bi-receipt"></i>
-                    <span class="menu-name">My Transactions</span>
+                    <span class="menu-name">Transactions</span>
                 </a>
             </li>
         </ul>
@@ -211,20 +203,40 @@
                 <div class="card-body p-2">
                     <div class="row gx-2">
                         <div class="col-12 d-flex justify-content-between">
-                            <a href="{{ route('admin.loans') }}" class="btn btn-square btn-link theme-red" data-bs-toggle="tooltip" data-bs-original-title="Loan">
-                                <i class="bi bi-cash-stack"></i>
+                            <a href="{{ route('admin.loans') }}" class="btn btn-square btn-link" data-bs-toggle="tooltip" data-bs-original-title="Loan">
+                                <span class="position-relative">
+                                    <i class="bi bi-cash-stack"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-warning rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                </span>
                             </a>
 
                             <a href="{{ route('admin.goals') }}" class="btn btn-square btn-link" data-bs-toggle="tooltip" data-bs-original-title="Goal">
-                                <i class="bi bi-tags"></i>
+                                <span class="position-relative">
+                                    <i class="bi bi-tags"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-warning rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                </span>
                             </a>
 
-                            <a href="" class="btn btn-square btn-link" data-bs-toggle="tooltip" data-bs-original-title="Wallet">
-                                <i class="bi bi-wallet2"></i>
+                            <a href="{{ route('admin.deposits') }}" class="btn btn-square btn-link" data-bs-toggle="tooltip" data-bs-original-title="Deposits">
+                                <span class="position-relative">
+                                    <i class="bi bi-wallet2"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-warning rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                </span>
                             </a>
 
                             <a href="{{ route('admin.investments') }}" class="btn btn-square btn-link" data-bs-toggle="tooltip" data-bs-original-title="Investment">
-                                <i class="bi bi-piggy-bank"></i>
+                                <span class="position-relative">
+                                    <i class="bi bi-piggy-bank"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-warning rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
