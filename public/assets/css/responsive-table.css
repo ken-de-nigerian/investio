@@ -1,0 +1,120 @@
+/* Stacked layout for mobile */
+@media (max-width: 767.98px) {
+    /* Transfers Table */
+    .transfers-table td:last-child, .transfers-table th:last-child {
+        padding-right: 10px;
+    }
+
+    .transfers-table td:first-child, .transfers-table th:first-child {
+        padding-left: 10px;
+    }
+
+    .transfers-table thead {
+        display: none; /* Hide the table header on mobile */
+    }
+    .transfers-table tr {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .transfers-table td {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+    }
+    .transfers-table td::before {
+        content: attr(data-label); /* Use the data-label attribute as the label */
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .transfers-table td .btn {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Investments Table */
+.investments-table td:last-child, .investments-table th:last-child {
+    padding-right: 10px;
+}
+.investments-table td:first-child, .investments-table th:first-child {
+    padding-left: 10px;
+}
+
+.margin-top{
+    margin-top: 8px;
+}
+
+@media (max-width: 767.98px) {
+    .investments-table thead {
+        display: none;
+    }
+    .investments-table tr {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .investments-table td {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+        padding: 0.5rem 10px;
+    }
+    .investments-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+    .investments-table td .btn {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+    }
+    .investments-table td[data-label="Progress"] {
+        display: block;
+        text-align: right;
+    }
+    .investments-table td[data-label="Progress"]::before {
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+    .investments-table .progress-container {
+        display: block;
+        text-align: right;
+        margin-top: 0.5rem;
+    }
+    .investments-table .progress {
+        width: 100px;
+        height: 6px;
+        margin-bottom: 0.5rem;
+        float: right;
+    }
+    .investments-table .progress-container span,
+    .investments-table .progress-container p {
+        display: block;
+        margin-bottom: 0.5rem;
+        white-space: nowrap;
+    }
+
+    .margin-top{
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .border-end-lg {
+        border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
+        border-bottom: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .border-end-lg {
+        border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
+        border-right: none !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

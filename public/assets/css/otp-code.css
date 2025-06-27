@@ -1,0 +1,92 @@
+:root {
+    --key-size: 60px;
+    --key-font-size: 22px;
+}
+
+/* OTP Digit Boxes */
+.otp-box {
+    width: var(--key-size);
+    height: var(--key-size);
+    font-size: var(--key-font-size);
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: var(--key-size);
+    border-radius: 8px;
+}
+
+/* OTP Display Flex Layout */
+#otpDisplay {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* OTP Display Flex Layout */
+#domOtpDisplay {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#wireOtpDisplay {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Keypad Grid */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, var(--key-size));
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Keypad Keys */
+.keypad-key {
+    width: var(--key-size);
+    height: var(--key-size);
+    font-size: var(--key-font-size);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keypad-key:hover {
+    background-color: #4d546b;
+}
+
+.border-success {
+    border-color: green !important;
+}
+
+.border-danger {
+    border-color: red !important;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.otp-box.shake {
+    animation: shake 0.4s ease;
+}
+
+.otp-box {
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.otp-box.fade-out {
+    opacity: 0.6;
+}
