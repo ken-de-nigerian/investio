@@ -28,28 +28,28 @@
                             </div>
 
                             <div class="card-body">
-                                <form id="send-email" action="{{ route('admin.email.notifications') }}" method="POST">
+                                <form id="send-email" action="{{ route('admin.email.broadcast') }}" method="POST">
                                     @csrf
 
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-4">
-                                                <input type="text" class="form-control rounded-4 @error('email_subject') is-invalid @enderror" id="email_subject" name="email_subject" autofocus value="{{ old('email_subject') }}">
+                                                <input type="text" class="form-control rounded-4 @error('subject') is-invalid @enderror" id="subject" name="subject" autofocus value="{{ old('subject') }}">
                                                 <div class="invalid-feedback">Email subject is required.</div>
-                                                <label for="email_subject">Email Subject</label>
+                                                <label for="subject">Email Subject</label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 mb-4">
-                                            <div id="editor">{!! old('email_content') !!}</div>
-                                            <input type="hidden" name="email_content" id="details" value="{{ old('email_content') }}">
+                                            <div id="editor">{!! old('message') !!}</div>
+                                            <input type="hidden" name="message" id="details" value="{{ old('message') }}">
                                             <div class="invalid-feedback">Email content is required.</div>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <button type="submit" id="sendEmailBtn" class="btn btn-theme w-100 rounded-4">Send Email</button>
+                                            <button type="submit" id="sendEmailBtn" class="btn btn-theme w-100 rounded-4">Send Email to All Users</button>
                                         </div>
                                     </div>
                                 </form>
@@ -144,7 +144,7 @@
         });
 
         // Remove validation feedback on input
-        ['email_subject', 'details'].forEach(fieldId => {
+        ['subject', 'details'].forEach(fieldId => {
             const input = document.getElementById(fieldId);
             if (input) {
                 input.addEventListener('input', function () {
