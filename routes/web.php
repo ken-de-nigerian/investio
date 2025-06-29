@@ -347,6 +347,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminDepositsController::class)
                 ->group(function () {
                     Route::get('/deposits', 'index')->name('deposits');
+
                     Route::get('/deposits/{deposit}/show', 'show')->name('deposits.show');
                     Route::delete('/deposits/{deposit}/delete', 'destroy')->name('deposits.delete');
 
@@ -374,56 +375,53 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminInterBankTransferController::class)
                 ->group(function () {
                     Route::get('/interbank', 'index')->name('interbank');
-                    Route::get('/interbank/create', 'create')->name('interbank.create');
-                    Route::post('/interbank', 'store')->name('interbank.store');
                     Route::get('/interbank/{interbank}/show', 'show')->name('interbank.show');
-                    Route::get('/interbank/{interbank}/edit', 'edit')->name('interbank.edit');
-                    Route::post('/interbank/{interbank}/update', 'update')->name('interbank.update');
                     Route::delete('/interbank/{interbank}/delete', 'destroy')->name('interbank.delete');
-                    Route::post('/interbank/{interbank}/approve', 'approve')->name('interbank.approve');
-                    Route::post('/interbank/{interbank}/reject', 'reject')->name('interbank.reject');
                 });
 
             // Domestic transfers
             Route::controller(AdminDomesticTransferController::class)
                 ->group(function () {
                     Route::get('/domestic', 'index')->name('domestic');
+
                     Route::get('/domestic/create', 'create')->name('domestic.create');
                     Route::post('/domestic', 'store')->name('domestic.store');
+
                     Route::get('/domestic/{domestic}/show', 'show')->name('domestic.show');
+
                     Route::get('/domestic/{domestic}/edit', 'edit')->name('domestic.edit');
-                    Route::post('/domestic/{domestic}/update', 'update')->name('domestic.update');
+                    Route::put('/domestic/{domestic}/update', 'update')->name('domestic.update');
+
                     Route::delete('/domestic/{domestic}/delete', 'destroy')->name('domestic.delete');
-                    Route::post('/domestic/{domestic}/approve', 'approve')->name('domestic.approve');
-                    Route::post('/domestic/{domestic}/reject', 'reject')->name('domestic.reject');
                 });
 
             // Wire transfers
             Route::controller(AdminWireTransferController::class)
                 ->group(function () {
                     Route::get('/wire', 'index')->name('wire');
+
                     Route::get('/wire/create', 'create')->name('wire.create');
                     Route::post('/wire', 'store')->name('wire.store');
+
                     Route::get('/wire/{wire}/show', 'show')->name('wire.show');
+
                     Route::get('/wire/{wire}/edit', 'edit')->name('wire.edit');
-                    Route::post('/wire/{wire}/update', 'update')->name('wire.update');
+                    Route::put('/wire/{wire}/update', 'update')->name('wire.update');
+
                     Route::delete('/wire/{wire}/delete', 'destroy')->name('wire.delete');
-                    Route::post('/wire/{wire}/reject', 'approve')->name('wire.approve');
-                    Route::post('/wire/{wire}/reject', 'reject')->name('wire.reject');
                 });
 
             // Loan financing
             Route::controller(AdminLoanController::class)
                 ->group(function () {
                     Route::get('/loans', 'index')->name('loans');
-                    Route::get('/loans/create', 'create')->name('loan.create');
-                    Route::post('/loans/store', 'store')->name('loan.store');
+
                     Route::get('/loans/{loan}/show', 'show')->name('loan.show');
+
                     Route::get('/loans/{loan}/edit', 'edit')->name('loan.edit');
-                    Route::post('/loans/{loan}/update', 'update')->name('loan.update');
+                    Route::put('/loans/{loan}/update', 'update')->name('loan.update');
+
                     Route::delete('/loans/{loan}/delete', 'destroy')->name('loan.delete');
-                    Route::post('/loans/{loan}/approve', 'approve')->name('loan.approve');
-                    Route::post('/loans/{loan}/reject', 'reject')->name('loan.reject');
                 });
 
             // Goals & savings

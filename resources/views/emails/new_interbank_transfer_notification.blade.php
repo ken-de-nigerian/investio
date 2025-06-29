@@ -60,7 +60,7 @@
                                     </tr>
                                 </table>
                                 <p>
-                                    <a href="{{ route('user.wallet', $transactionId) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #d35400; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">View Transaction Details</a>
+                                    <a href="{{ route('admin.interbank') }}" role="button" style="display: inline-block; padding: 10px 20px; background: #d35400; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">View Transaction Details</a>
                                 </p>
                                 <p style="color: #c0392b; font-weight: bold;">This is an automated notification. No action is required unless the transaction appears suspicious.</p>
                             </div>

@@ -99,7 +99,7 @@
     </div>
 @endif
 
-@if(Route::is('admin.deposits.alert'))
+@if(Route::is('admin.alert'))
     <!-- Delete Alert Modal -->
     <div class="modal adminuiux-modal fade" id="deleteAlertModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog rounded-6">
@@ -114,6 +114,106 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <form id="deleteAlertForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(Route::is('admin.interbank') || Route::is('admin.users.show'))
+    <!-- Delete Interbank Transfer Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteInterbankTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteInterbankTransferModalLabel">Confirm Interbank Transfer Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this interbank transfer? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteInterbankTransferForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(Route::is('admin.domestic') || Route::is('admin.users.show'))
+    <!-- Delete Domestic Transfer Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteDomesticTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteDomesticTransferModalLabel">Confirm Domestic Transfer Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this domestic transfer? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteDomesticTransferForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(Route::is('admin.wire') || Route::is('admin.users.show'))
+    <!-- Delete Wire Transfer Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteWireTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteWireTransferModalLabel">Confirm Wire Transfer Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this wire transfer? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteWireTransferForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(Route::is('admin.loans') || Route::is('admin.users.show'))
+    <!-- Delete Loan Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteLoanModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteLoanModalLabel">Confirm Loan Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this loan? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteLoanForm" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -259,75 +359,6 @@
         </div>
     </div>
 
-    <!-- Delete Interbank Transfer Modal -->
-    <div class="modal adminuiux-modal fade" id="deleteInterbankTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog rounded-6">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteInterbankTransferModalLabel">Confirm Interbank Transfer Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this interbank transfer? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteInterbankTransferForm" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Domestic Transfer Modal -->
-    <div class="modal adminuiux-modal fade" id="deleteDomesticTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog rounded-6">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteDomesticTransferModalLabel">Confirm Domestic Transfer Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this domestic transfer? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteDomesticTransferForm" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Wire Transfer Modal -->
-    <div class="modal adminuiux-modal fade" id="deleteWireTransferModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog rounded-6">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteWireTransferModalLabel">Confirm Wire Transfer Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this wire transfer? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteWireTransferForm" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Delete Goal Modal -->
     <div class="modal adminuiux-modal fade" id="deleteGoalModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog rounded-6">
@@ -342,29 +373,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <form id="deleteGoalForm" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Loan Modal -->
-    <div class="modal adminuiux-modal fade" id="deleteLoanModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog rounded-6">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteLoanModalLabel">Confirm Loan Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this loan? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteLoanForm" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

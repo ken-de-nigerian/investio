@@ -1,10 +1,9 @@
-@php use Carbon\Carbon; @endphp
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Loan Disbursement Confirmation</title>
+        <title>Transfer Status Confirmation</title>
     </head>
     <body>
         <style>
@@ -26,38 +25,50 @@
                         </a>
                     </td>
                 </tr>
+
                 <tr>
                     <td align="left" valign="center">
                         <div style="text-align: left; margin: 0 20px; padding: 40px; background-color: #ffffff; border-radius: 6px;">
                             <!--begin:Email content-->
                             <div style="padding-bottom: 30px; font-size: 18px;">
-                                <strong>Loan Disbursement Confirmation</strong>
+                                <strong>Hello {{ $transfer->user->first_name }}</strong>
                             </div>
+
                             <div style="padding-bottom: 40px; font-family: Poppins, Helvetica, sans-serif; font-size: 14px;">
-                                <p>Dear {{ $loan->user->first_name }},</p>
-                                <p>We are pleased to inform you that your loan has been disbursed to your account.</p>
-                                <p><strong>Loan Details:</strong></p>
-                                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                                @if($transfer->trans_status === 'approved')
+                                    <p>Your domestic transfer has been successfully approved with the following details:</p>
+                                @else
+                                    <p>Your domestic transfer has been rejected with the following details:</p>
+                                @endif
+                                <table cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse;">
                                     <tr style="background: #f0f0f0;">
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;"><strong>Loan Amount</strong></td>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;">${{ number_format($loan->loan_amount, 2) }}</td>
+                                        <td style="padding: 8px;"><strong>Reference ID:</strong></td>
+                                        <td style="padding: 8px;">{{ $transfer->reference_id }}</td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;"><strong>Disbursed On</strong></td>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;">{{ $loan->disbursed_at->format('F j, Y, g:i A T') }}</td>
+                                        <td style="padding: 8px;"><strong>Amount:</strong></td>
+                                        <td style="padding: 8px;">${{ number_format($transfer->amount, 2) }}</td>
                                     </tr>
                                     <tr style="background: #f0f0f0;">
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;"><strong>First Due Date</strong></td>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;">{{ $loan->next_due_date->format('F j, Y') }}</td>
+                                        <td style="padding: 8px;"><strong>Bank:</strong></td>
+                                        <td style="padding: 8px;">{{ $transfer->bank_name }}</td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;"><strong>Monthly EMI</strong></td>
-                                        <td style="padding: 8px; border-bottom: 1px solid #eeeeee;">${{ number_format($loan->monthly_emi, 2) }}</td>
+                                        <td style="padding: 8px;"><strong>Account Number:</strong></td>
+                                        <td style="padding: 8px;">{{ $transfer->account_number }}</td>
+                                    </tr>
+                                    <tr style="background: #f0f0f0;">
+                                        <td style="padding: 8px;"><strong>Account Name:</strong></td>
+                                        <td style="padding: 8px;">{{ $transfer->acct_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px;"><strong>Status:</strong></td>
+                                        <td style="padding: 8px;">{{ ucfirst($transfer->trans_status) }}</td>
                                     </tr>
                                 </table>
-                                <p>Please ensure timely repayment starting from {{ $loan->next_due_date->format('F j, Y') }}. Contact our support team at {{ config('app.support_email', 'support@example.com') }} for any questions.</p>
+                                <p>If you did not initiate this transaction, please contact our support team immediately.</p>
                                 <p>
-                                    <a href="{{ route('user.loan.show', $loan->id) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #00725b; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">View Loan Details</a>
+                                    <a href="{{ route('user.wallet') }}" role="button" style="display: inline-block; padding: 10px 20px; background: #4a90e2; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">View Transfer History</a>
                                 </p>
                             </div>
                             <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0;"></div>
@@ -72,7 +83,7 @@
                 <tr>
                     <td align="center" valign="center" style="font-size: 13px; text-align: center; padding: 20px; color: #6d6e7c;">
                         <p>{{ config('settings.site.address', 'Contact support for address details') }}</p>
-                        <p>Copyright © {{ Carbon::now()->year }} <a href="{{ config('app.url') }}" rel="noopener" target="_blank">{{ config('app.name') }}</a>.</p>
+                        <p>Copyright © <a href="{{ config('app.url') }}" rel="noopener" target="_blank">{{ config('app.name') }}</a>.</p>
                     </td>
                 </tr>
                 </tbody>

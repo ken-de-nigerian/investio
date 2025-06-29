@@ -51,7 +51,7 @@ class StatisticsController extends Controller
             'plan_categories' => $plan_categories,
             'total_invested' => $total_invested,
             'category_data' => $category_data,
-            'transactions' => Transaction::where('user_id', Auth::id())->limit(10)->get()
+            'transactions' => Transaction::where('user_id', Auth::id())->latest()->limit(10)->get()
         ]);
     }
 

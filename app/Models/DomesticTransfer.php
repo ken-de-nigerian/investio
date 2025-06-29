@@ -27,7 +27,9 @@ class DomesticTransfer extends Model
         'trans_type',
         'acct_remarks',
         'acct_type',
-        'trans_status'
+        'trans_status',
+        'created_at',
+        'updated_at'
     ];
 
     /**

@@ -30,7 +30,9 @@ class WireTransfer extends Model
         'acct_swift',
         'acct_routing',
         'trans_type',
-        'trans_status'
+        'trans_status',
+        'created_at',
+        'updated_at',
     ];
 
     /**

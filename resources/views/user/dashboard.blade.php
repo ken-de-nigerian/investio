@@ -18,6 +18,18 @@
 
                 <h3 class="fw-normal mb-0 text-secondary">{{ $greeting }},</h3>
                 <h1>{{ $auth['user']->first_name }} {{ $auth['user']->last_name }}</h1>
+                
+                <div class="d-flex align-items-center gap-2">
+                    <div>
+                        <i class="bi bi-geo-alt-fill me-1 text-muted fs-5 align-middle"></i>
+                        {{ ucfirst(str_replace('_', ' ', $auth['user']->profile->country ?? 'N/A')) }}
+                    </div>
+
+                    <span class="badge badge-sm badge-light text-bg-{{ $auth['user']->kyc && $auth['user']->kyc->status == 'approved' ? 'success' : ($auth['user']->kyc && $auth['user']->kyc->status == 'pending' ? 'warning' : 'danger') }}">
+                        <i class="bi bi-circle-fill me-1"></i>
+                        {{ ucfirst($auth['user']->kyc->status ?? 'unverified') }}
+                    </span>
+                </div>
 
                 <div class="row gx-3 align-items-center mt-3">
                     <div class="col-12 col-md-11 col-xxl-9 mb-4">

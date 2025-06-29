@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Loan;
+use App\Models\DomesticTransfer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,18 +11,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class LoanDisbursementConfirmation extends Mailable
+class DomesticTransferManagedConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Loan $loan;
+    public DomesticTransfer $domesticTransfer;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Loan $loan)
+    public function __construct(DomesticTransfer $domesticTransfer)
     {
-        $this->loan = $loan;
+        $this->domesticTransfer = $domesticTransfer;
     }
 
     /**
@@ -31,7 +31,7 @@ class LoanDisbursementConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Loan Disbursement Confirmation',
+            subject: 'Domestic Transfer Status Confirmation',
         );
     }
 
@@ -41,7 +41,10 @@ class LoanDisbursementConfirmation extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.loan_disbursement_confirmation',
+            view: 'emails.domestic_transfer_managed_confirmation',
+            with: [
+                'transfer' => $this->domesticTransfer,
+            ]
         );
     }
 

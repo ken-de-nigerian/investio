@@ -75,6 +75,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="text-center mb-5">
                                         <h5 class="fw-normal">
                                             <b class="fw-bold">Great!</b> You are about to send
@@ -82,6 +83,7 @@
                                         <h1 class="mb-0 text-theme-1" id="confirm-amount">$0.00</h1>
                                         <p class="text-secondary small">to <span id="confirm-name">John Doe</span></p>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-4">

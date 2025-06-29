@@ -356,7 +356,7 @@
                                             // Use loan status for badge instead of calculated status
                                             $statusBadges = [
                                                 'pending' => 'text-bg-warning',
-                                                'approved' => $isLoanCompleted ? 'text-bg-success' : 'text-bg-warning',
+                                                'approved' => $isLoanCompleted ? 'text-bg-success' : 'text-bg-secondary',
                                                 'rejected' => 'text-bg-danger',
                                                 'disbursed' => 'text-bg-info',
                                                 'completed' => 'text-bg-success',

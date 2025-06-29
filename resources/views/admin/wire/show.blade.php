@@ -1,7 +1,68 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <!-- Content -->
     <div class="container my-5" id="main-content">
+        <!-- Scattered Star Icons -->
+        <div class="position-absolute top-0 start-0 opacity-15" style="z-index: 0;">
+            <i class="bi bi-star-fill text-primary" style="font-size: 1.2rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-10" style="top: 10%; right: 15%; z-index: 0;">
+            <i class="bi bi-stars text-warning" style="font-size: 1.8rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-20" style="top: 20%; left: 5%; z-index: 0;">
+            <i class="bi bi-star text-info" style="font-size: 1rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-15" style="top: 35%; right: 5%; z-index: 0;">
+            <i class="bi bi-star-fill text-success" style="font-size: 1.5rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-10" style="top: 50%; left: 2%; z-index: 0;">
+            <i class="bi bi-stars text-purple" style="font-size: 1.3rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-20" style="top: 65%; right: 8%; z-index: 0;">
+            <i class="bi bi-star text-primary" style="font-size: 1.1rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-15" style="top: 80%; left: 10%; z-index: 0;">
+            <i class="bi bi-star-fill text-warning" style="font-size: 1.4rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-10" style="bottom: 20%; right: 12%; z-index: 0;">
+            <i class="bi bi-stars text-info" style="font-size: 1.6rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-25" style="bottom: 10%; left: 8%; z-index: 0;">
+            <i class="bi bi-star text-success" style="font-size: 1rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-15" style="top: 45%; right: 20%; z-index: 0;">
+            <i class="bi bi-star-fill text-danger" style="font-size: 1.2rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-10" style="top: 60%; left: 15%; z-index: 0;">
+            <i class="bi bi-stars text-primary" style="font-size: 1.7rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-20" style="bottom: 35%; right: 3%; z-index: 0;">
+            <i class="bi bi-star text-warning" style="font-size: 1.3rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-15" style="top: 25%; left: 20%; z-index: 0;">
+            <i class="bi bi-star-fill text-info" style="font-size: 1.1rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-10" style="bottom: 50%; left: 3%; z-index: 0;">
+            <i class="bi bi-stars text-success" style="font-size: 1.5rem;"></i>
+        </div>
+
+        <div class="position-absolute opacity-25" style="top: 15%; right: 25%; z-index: 0;">
+            <i class="bi bi-star text-purple" style="font-size: 1rem;"></i>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="invoice-box card border rounded-4 p-4 p-md-5">
@@ -69,37 +130,12 @@
                                     <span class="fw-light">Purpose</span>
                                     <span class="text-muted fs-xs">{{ $transfer->acct_remarks }}</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bank Details -->
-                    <div class="mb-5">
-                        <h6 class="fw-semibold text-uppercase text-primary mb-3">Bank Details</h6>
-                        <div class="card border border-1 rounded-3">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span class="fw-light">Sender Bank</span>
-                                    <span class="text-muted fs-xs">{{ config('app.name') }}</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span class="fw-light">Recipient Bank</span>
-                                    <span class="text-muted fs-xs">{{ $transfer->bank_name }}</span>
-                                </div>
-
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span class="fw-light">COUNTRY</span>
-                                    <span class="text-muted fs-xs">{{ ucfirst($transfer->acct_country) }}</span>
-                                </div>
-
-                                <div class="d-flex justify-content-between border-bottom py-2">
-                                    <span class="fw-light">SWIFT/BIC Code</span>
-                                    <span class="text-muted fs-xs">{{ $transfer->acct_swift }}</span>
-                                </div>
 
                                 <div class="d-flex justify-content-between py-2">
-                                    <span class="fw-light">Routing Number</span>
-                                    <span class="text-muted fs-xs">{{ $transfer->acct_routing }}</span>
+                                    <span class="fw-light">Status</span>
+                                    <span class="badge badge-sm badge-light text-bg-{{ $transfer->trans_status == 'approved' ? 'success' : ($transfer->trans_status == 'pending' ? 'warning' : 'danger') }} small" style="font-size: 12px;">
+                                        {{ ucfirst($transfer->trans_status) }}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +143,7 @@
 
                     <!-- Print Button -->
                     <div class="text-center no-print">
-                        <a href="{{ route('user.wallet') }}" class="btn btn-outline-primary px-4">
+                        <a href="{{ route('admin.wire') }}" class="btn btn-outline-primary px-4">
                             <i class="bi bi-arrow-up-left-circle me-2"></i> Go back
                         </a>
                     </div>

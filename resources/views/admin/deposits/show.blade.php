@@ -128,10 +128,6 @@
                             <button type="submit" class="btn btn-danger px-4 me-2 rounded-4 mb-3" onclick="rejectDeposit({{ $deposit->id }})">
                                 <i class="bi bi-x-circle me-2"></i> Reject
                             </button>
-
-                            <button type="submit" class="btn btn-outline-danger px-4 rounded-4 mb-3" onclick="deleteDeposit({{ $deposit->id }})">
-                                <i class="bi bi-trash me-2"></i> Delete
-                            </button>
                         </div>
                     @endif
 
@@ -252,29 +248,6 @@
             form._submitHandler = (event) => {
                 event.preventDefault();
                 handleDepositForm(form, submitButton, form.action, 'PATCH', 'Deposit rejected successfully', '<i class="bi bi-x-circle me-2"></i>Reject');
-            };
-            form.addEventListener('submit', form._submitHandler);
-        }
-
-        // Delete Deposit
-        function deleteDeposit(deposit_id) {
-            const modalElement = document.getElementById('deleteDepositModal');
-            const form = document.getElementById('deleteDepositForm');
-            const submitButton = form?.querySelector('button[type="submit"]');
-
-            if (!modalElement || !form || !submitButton) {
-                return;
-            }
-
-            form.action = `/admin/deposits/${deposit_id}/delete`;
-            const modal = new bootstrap.Modal(modalElement);
-            modal.show();
-
-            // Remove any existing submit listeners
-            form.removeEventListener('submit', form._submitHandler);
-            form._submitHandler = (event) => {
-                event.preventDefault();
-                handleDepositForm(form, submitButton, form.action, 'DELETE', 'Deposit deleted successfully', '<i class="bi bi-trash me-2"></i>Delete');
             };
             form.addEventListener('submit', form._submitHandler);
         }

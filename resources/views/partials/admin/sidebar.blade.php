@@ -20,7 +20,7 @@
                 </figure>
 
                 <h5 class="mb-1 fw-medium">{{ $auth['user']['first_name'] }} {{ $auth['user']['last_name'] }}</h5>
-                <p class="small">The Investment UI Kit</p>
+                <p class="small">{{ $auth['user']->email }}</p>
             </div>
         </div>
 
@@ -35,27 +35,27 @@
 
             <!-- Users Dropdown -->
             <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.users.*') }}" data-bs-toggle="dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive(['admin.users', 'admin.users.show', 'admin.users.edit']) }}" data-bs-toggle="dropdown">
                     <i class="menu-icon bi bi-people"></i>
                     <span class="menu-name">Users</span>
                 </a>
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.users') }}" class="nav-link">
+                        <a href="{{ route('admin.users') }}" class="nav-link {{ isActive(['admin.users', 'admin.users.show', 'admin.users.edit']) }}">
                             <i class="menu-icon bi bi-person"></i>
                             <span class="menu-name">Overview</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.users.create') }}" class="nav-link">
+                        <a href="{{ route('admin.users.create') }}" class="nav-link {{ isActive('admin.users.create') }}" target="_blank">
                             <i class="menu-icon bi bi-person-add"></i>
                             <span class="menu-name">Create Users</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.email.notifications') }}" class="nav-link">
+                        <a href="{{ route('admin.email.notifications') }}" class="nav-link {{ isActive('admin.email.notifications') }}">
                             <i class="menu-icon bi bi-envelope-at"></i>
                             <span class="menu-name">Email Notifications</span>
                         </a>
@@ -65,21 +65,21 @@
 
             <!-- Deposits Dropdown -->
             <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.deposits.*') }}" data-bs-toggle="dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive(['admin.deposits.methods', 'admin.deposits.methods.add', 'admin.deposits.methods.edit']) }}" data-bs-toggle="dropdown">
                     <i class="menu-icon bi bi-wallet2"></i>
                     <span class="menu-name">Deposits</span>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits') }}" class="nav-link">
+                        <a href="{{ route('admin.deposits') }}" class="nav-link {{ isActive(['admin.deposits', 'admin.deposits.show']) }}">
                             <i class="menu-icon bi bi-bar-chart"></i>
                             <span class="menu-name">Overview</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.methods') }}" class="nav-link">
+                        <a href="{{ route('admin.deposits.methods') }}" class="nav-link {{ isActive(['admin.deposits.methods', 'admin.deposits.methods.add', 'admin.deposits.methods.edit']) }}">
                             <i class="menu-icon bi bi-credit-card"></i>
                             <span class="menu-name">Payment Methods</span>
                         </a>
@@ -90,7 +90,7 @@
             <!-- Credit | Debit -->
             <li class="nav-item">
                 <div class="nav-item">
-                    <a href="{{ route('admin.alert') }}" class="nav-link {{ isActive('admin.alert.*') }}">
+                    <a href="{{ route('admin.alert') }}" class="nav-link {{ isActive('admin.alert') }}">
                         <i class="menu-icon bi bi-currency-exchange"></i>
                         <span class="menu-name">Credit | Debit</span>
                     </a>
@@ -123,7 +123,7 @@
 
             <!-- Loans Financing -->
             <li class="nav-item">
-                <a href="{{ route('admin.loans') }}" class="nav-link {{ isActive('admin.loans.*') }}">
+                <a href="{{ route('admin.loans') }}" class="nav-link {{ isActive(['admin.loans', 'admin.loan.show', 'admin.loan.edit']) }}">
                     <i class="menu-icon bi bi-cash-stack"></i>
                     <span class="menu-name">Loans Financing</span>
                 </a>
@@ -131,28 +131,28 @@
 
             <!-- Transfers Dropdown -->
             <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive(['admin.interbank.*', 'admin.domestic.*', 'admin.wire.*']) }}" data-bs-toggle="dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive(['admin.interbank', 'admin.interbank.show', 'admin.domestic', 'admin.domestic.show', 'admin.domestic.edit', 'admin.wire', 'admin.wire.show', 'admin.wire.edit']) }}" data-bs-toggle="dropdown">
                     <i class="menu-icon bi bi-arrow-left-right"></i>
                     <span class="menu-name">Transfers</span>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="nav-item">
-                        <a href="{{ route('admin.interbank') }}" class="nav-link">
+                        <a href="{{ route('admin.interbank') }}" class="nav-link {{ isActive(['admin.interbank', 'admin.interbank.show']) }}">
                             <i class="menu-icon bi bi-bank"></i>
                             <span class="menu-name">Interbank Transfer</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.domestic') }}" class="nav-link">
+                        <a href="{{ route('admin.domestic') }}" class="nav-link {{ isActive(['admin.domestic', 'admin.domestic.show', 'admin.domestic.edit']) }}">
                             <i class="menu-icon bi bi-calendar-event"></i>
                             <span class="menu-name">Domestic Transfer</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.wire') }}" class="nav-link">
+                        <a href="{{ route('admin.wire') }}" class="nav-link {{ isActive(['admin.wire', 'admin.wire.show', 'admin.wire.edit']) }}">
                             <i class="menu-icon bi bi-globe-americas"></i>
                             <span class="menu-name">Wire Transfer</span>
                         </a>
@@ -162,7 +162,7 @@
 
             <!-- Investment Dropdown -->
             <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.investments.*') }}" data-bs-toggle="dropdown">
+                <a href="javascript:void(0)" class="nav-link dropdown-toggle {{ isActive('admin.investments') }}" data-bs-toggle="dropdown">
                     <i class="menu-icon bi bi-piggy-bank-fill"></i>
                     <span class="menu-name">Investment</span>
                 </a>

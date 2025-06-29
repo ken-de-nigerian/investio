@@ -10,7 +10,7 @@
         <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
             <div class="row g-4">
                 <div class="col-auto">
-                    <div class="avatar-lg">
+                    <div class="avatar avatar-130">
                         <img src="{{ $user->avatar ?: 'https://placehold.co/124x124/222934/ffffff?text=' . strtoupper(substr($user->first_name, 0, 1) . substr($user->last_name, 0, 1)) }}" alt="user-img" class="img-thumbnail rounded-circle" />
                     </div>
                 </div>
@@ -529,7 +529,7 @@
                                                                                 </td>
 
                                                                                 <td data-label="Action">
-                                                                                    <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                                    <a href="{{ route('admin.interbank.show', $transfer->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                                     <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteInterBankTransfer({{ $transfer->id }})">Delete</button>
                                                                                 </td>
                                                                             </tr>
@@ -593,7 +593,7 @@
                                                                                 </td>
 
                                                                                 <td data-label="Action">
-                                                                                    <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                                    <a href="{{ route('admin.domestic.show', $transfer->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                                     <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteDomesticTransfer({{ $transfer->id }})">Delete</button>
                                                                                 </td>
                                                                             </tr>
@@ -657,7 +657,7 @@
                                                                                 </td>
 
                                                                                 <td data-label="Action">
-                                                                                    <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                                    <a href="{{ route('admin.wire.show', $transfer->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                                     <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteWireTransfer({{ $transfer->id }})">Delete</button>
                                                                                 </td>
                                                                             </tr>
@@ -752,7 +752,7 @@
                                                                         </td>
 
                                                                         <td data-label="Action">
-                                                                            <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                            <a href="{{ route('admin.goal.show', $goal->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                             <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteGoal({{ $goal->id }})">Delete</button>
                                                                         </td>
                                                                     </tr>
@@ -868,7 +868,7 @@
                                                                         </td>
 
                                                                         <td data-label="Action">
-                                                                            <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                            <a href="{{ route('admin.loan.show', $loan->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                             <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteLoan({{ $loan->id }})">Delete</button>
                                                                         </td>
                                                                     </tr>
@@ -990,7 +990,7 @@
                                                                         </td>
 
                                                                         <td data-label="Action">
-                                                                            <a href="#" class="btn btn-sm btn-outline-info rounded-4">View</a>
+                                                                            <a href="{{ route('admin.investment.show', $investment->id) }}" class="btn btn-sm btn-outline-info rounded-4">View</a>
                                                                             <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteInvestment({{ $investment->id }})">Delete</button>
                                                                         </td>
                                                                     </tr>

@@ -47,7 +47,7 @@
                                     <li><strong>Reference ID:</strong> {{ $transfer->reference_id }}</li>
                                 </ul>
                                 <p>
-                                    <a href="{{ route('admin.transfers', $transfer->reference_id) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #3490dc; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">Review Transfer</a>
+                                    <a href="{{ route('admin.domestic.show', $transfer->id) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #3490dc; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">Review Transfer</a>
                                 </p>
                             </div>
                             <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0;"></div>

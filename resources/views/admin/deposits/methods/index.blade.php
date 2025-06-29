@@ -58,7 +58,6 @@
 
                                             <td data-label="Action">
                                                 <a href="{{ route('admin.deposits.methods.edit', $gateway['method_code']) }}" class="btn btn-sm btn-outline-info rounded-4">Edit</a>
-                                                <button class="btn btn-sm btn-outline-danger rounded-4" onclick="deleteWallet({{ $gateway['method_code'] }})">Delete</button>
                                             </td>
                                         </tr>
                                     @empty

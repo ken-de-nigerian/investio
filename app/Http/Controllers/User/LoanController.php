@@ -226,6 +226,13 @@ class LoanController extends Controller
             ]);
         }
 
+        if ($loan->status === 'approved') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Loan has been approved but not yet disbursed. Please contact the administrator.',
+            ]);
+        }
+
         // Check balance
         if ($validated['repayment_amount'] > $user->balance) {
             return response()->json([

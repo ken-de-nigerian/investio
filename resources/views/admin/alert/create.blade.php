@@ -9,7 +9,6 @@
                         <li class="breadcrumb-item bi">
                             <a href="{{ route('admin.dashboard') }}"><i class="bi bi-house-door me-1 fs-14"></i> Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item bi"><a href="{{ route('admin.deposits') }}">Deposits</a></li>
                         <li class="breadcrumb-item active bi" aria-current="page">Credit | Debit</li>
                     </ol>
                 </nav>

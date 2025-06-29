@@ -44,7 +44,7 @@
                                     <li><strong>Transaction ID:</strong> {{ $deposit->transaction_id }}</li>
                                 </ul>
                                 <p>
-                                    <a href="{{ route('admin.deposits', $deposit->id) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #e74c3c; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">Review Deposit</a>
+                                    <a href="{{ route('admin.deposits.show', $deposit->id) }}" role="button" style="display: inline-block; padding: 10px 20px; background: #e74c3c; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">Review Deposit</a>
                                 </p>
                             </div>
                             <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0;"></div>

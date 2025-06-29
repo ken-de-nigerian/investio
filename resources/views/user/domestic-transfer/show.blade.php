@@ -4,7 +4,7 @@
     <div class="container my-5" id="main-content">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                <div class="invoice-box border rounded-4 p-4 p-md-5">
+                <div class="invoice-box card border rounded-4 p-4 p-md-5">
                     <!-- Header -->
                     <div class="invoice-header text-center border-bottom pb-4 mb-4">
                         <h1 class="h3 fw-bold text-primary mb-2">Domestic Transfer Receipt</h1>
