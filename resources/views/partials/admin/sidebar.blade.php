@@ -79,18 +79,21 @@
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('admin.deposits.alert') }}" class="nav-link">
-                            <i class="menu-icon bi bi-currency-exchange"></i>
-                            <span class="menu-name">Credit | Debit</span>
-                        </a>
-                    </div>
-
-                    <div class="nav-item">
                         <a href="{{ route('admin.deposits.methods') }}" class="nav-link">
                             <i class="menu-icon bi bi-credit-card"></i>
                             <span class="menu-name">Payment Methods</span>
                         </a>
                     </div>
+                </div>
+            </li>
+
+            <!-- Credit | Debit -->
+            <li class="nav-item">
+                <div class="nav-item">
+                    <a href="{{ route('admin.alert') }}" class="nav-link {{ isActive('admin.alert.*') }}">
+                        <i class="menu-icon bi bi-currency-exchange"></i>
+                        <span class="menu-name">Credit | Debit</span>
+                    </a>
                 </div>
             </li>
 

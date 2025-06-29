@@ -61,6 +61,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany
+     */
+    public function alert()
+    {
+        return $this->hasMany(Alert::class);
+    }
+
+    /**
      * @return HasOne|User
      */
     public function profile(): HasOne|User

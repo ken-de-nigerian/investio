@@ -99,6 +99,31 @@
     </div>
 @endif
 
+@if(Route::is('admin.deposits.alert'))
+    <!-- Delete Alert Modal -->
+    <div class="modal adminuiux-modal fade" id="deleteAlertModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog rounded-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteDepositModalLabel">Confirm Alert Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this alert? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteAlertForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 @if(Route::is('admin.users.show'))
     <!-- Manage Funds Modal -->
     <div class="modal adminuiux-modal fade" id="fundsModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="fundsModalLabel" aria-hidden="true">
@@ -122,8 +147,8 @@
                             <label for="fundsType" class="form-label">Action <small class="text-muted">(Choose the fund type)</small></label>
                             <select class="form-select form-select-lg rounded-4" id="fundsType" name="type">
                                 <option value="">Select Action</option>
-                                <option value="deposit">Deposit</option>
-                                <option value="withdraw">Withdraw</option>
+                                <option value="deposit">Credit</option>
+                                <option value="withdraw">Debit</option>
                             </select>
                             <div class="invalid-feedback">Type is required.</div>
                         </div>

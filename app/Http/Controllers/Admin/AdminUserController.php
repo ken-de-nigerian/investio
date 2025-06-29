@@ -9,6 +9,7 @@ use App\Mail\CardCreatedConfirmation;
 use App\Mail\FundsManagedConfirmation;
 use App\Mail\PasswordResetConfirmation;
 use App\Mail\UserEmailConfirmation;
+use App\Models\Alert;
 use App\Models\Card;
 use App\Models\Deposit;
 use App\Models\DomesticTransfer;
@@ -557,8 +558,8 @@ class AdminUserController extends Controller
             // Determine transaction nature
             $transType = $type === 'deposit' ? 'credit' : 'debit';
             $description = $type === 'deposit'
-                ? 'Admin deposited funds to your account'
-                : 'Admin withdrew funds from your account';
+                ? 'Funds credited to your account'
+                : 'Funds withdrawn from your account';
 
             // Check withdrawal limit
             if ($type === 'withdraw' && $user->balance < $amount) {
@@ -575,8 +576,19 @@ class AdminUserController extends Controller
 
             $user->save();
 
+            // Create alert
+            Alert::create([
+                'user_id' => $user->id,
+                'sender_name' => config('app.name'),
+                'sender_bank' => config('app.name'),
+                'amount' => $amount,
+                'trans_type' => $transType,
+                'status' => 'approved',
+                'date' => now(),
+            ]);
+
             // Log transaction
-            $transactionId = 'ADMIN_' . strtoupper($type) . '_' . Str::uuid();
+            $transactionId = strtoupper($transType) . '_' . Str::uuid();
 
             Transaction::create([
                 'user_id' => $user->id,

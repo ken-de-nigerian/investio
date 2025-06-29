@@ -3,7 +3,7 @@
     <!-- content -->
     <div class="container mt-4 mb-5" id="main-content">
         <div class="row align-items-center mb-4">
-            <div class="col-12 col-sm">
+            <div class="col-6 col-sm">
                 <nav aria-label="breadcrumb" class="mb-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item bi"><a href="{{ route('admin.dashboard') }}"><i class="bi bi-house-door me-1 fs-14"></i> Dashboard</a></li>
@@ -11,6 +11,12 @@
                     </ol>
                 </nav>
                 <h5>Deposits</h5>
+            </div>
+
+            <div class="col-6 col-sm text-end">
+                <a href="{{ route('admin.alert') }}" class="btn btn-theme">
+                    <i class="bi bi-plus-lg"></i> Credit | Debit
+                </a>
             </div>
         </div>
 

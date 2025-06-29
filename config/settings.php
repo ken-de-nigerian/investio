@@ -17,6 +17,7 @@ return [
         'email' => 'support@yourplatform.com',
         'phone' => '+1 (234) 567-8900',
         'address' => 'admin@site.com',
+        'wallet_addresses' => env('WALLET_ADDRESSES', []),
     ],
 
     /*
@@ -31,6 +32,7 @@ return [
     'register' => [
         'enabled' => env('REGISTRATION_ENABLED', true),
     ],
+
     'login' => [
         'social_enabled' => env('SOCIAL_LOGIN_ENABLED', true),
     ],
@@ -73,15 +75,16 @@ return [
         'precision' => 2               // Decimal places to display
     ],
 
+
     /*
-|--------------------------------------------------------------------------
-| Loan Settings
-|--------------------------------------------------------------------------
-|
-| Configuration options related to loan requests, including interest rate,
-| repayment duration, penalties, and other relevant financial settings.
-|
-*/
+    |--------------------------------------------------------------------------
+    | Loan Settings
+    |--------------------------------------------------------------------------
+    |
+    | Configuration options related to loan requests, including interest rate,
+    | repayment duration, penalties, and other relevant financial settings.
+    |
+    */
     'loan' => [
         'interest_rate' => 13.5,          // Annual interest rate (in percentage)
         'min_amount' => 100.00,           // Minimum loan amount allowed

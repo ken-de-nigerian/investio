@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAlertController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDepositsController;
 use App\Http\Controllers\Admin\AdminDomesticTransferController;
@@ -346,15 +347,27 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AdminDepositsController::class)
                 ->group(function () {
                     Route::get('/deposits', 'index')->name('deposits');
-                    Route::get('/deposits/methods', 'methods')->name('deposits.methods');
-                    Route::get('/deposits/alert', 'create')->name('deposits.alert');
-                    Route::post('/deposits', 'store')->name('deposits.store');
                     Route::get('/deposits/{deposit}/show', 'show')->name('deposits.show');
-                    Route::get('/deposits/{deposit}/edit', 'edit')->name('deposits.edit');
-                    Route::post('/deposits/{deposit}/update', 'update')->name('deposits.update');
                     Route::delete('/deposits/{deposit}/delete', 'destroy')->name('deposits.delete');
+
                     Route::patch('/deposits/{deposit}/approve', 'approve')->name('deposits.approve');
                     Route::patch('/deposits/{deposit}/reject', 'reject')->name('deposits.reject');
+
+                    Route::get('/deposits/methods', 'methods')->name('deposits.methods');
+                    Route::get('/deposits/methods/add', 'addMethods')->name('deposits.methods.add');
+                    Route::post('/deposits/methods/store', 'storeMethods')->name('deposits.methods.store');
+                    Route::get('/deposits/methods/{id}/edit', 'editMethods')->name('deposits.methods.edit');
+                    Route::put('/deposits/methods/{id}/update', 'updateMethods')->name('deposits.methods.update');
+                });
+
+            // Alert management
+            Route::controller(AdminAlertController::class)
+                ->group(function () {
+                    Route::get('/alert', 'index')->name('alert');
+                    Route::post('/alert/store', 'store')->name('alert.store');
+                    Route::get('/alert/{alert}/edit', 'edit')->name('alert.edit');
+                    Route::put('/alert/{alert}/update', 'update')->name('alert.update');
+                    Route::delete('/alert/{alert}/delete', 'delete')->name('alert.delete');
                 });
 
             // Interbank transfers

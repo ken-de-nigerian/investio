@@ -1200,7 +1200,7 @@
                                                                             <p class="mb-0 small" style="font-size: 12px;">{{ $transaction->description }}</p>
                                                                         </td>
 
-                                                                        <td data-label="Status">
+                                                                        <td data-label="Type">
                                                                             <span class="badge badge-sm badge-light text-bg-{{ $transaction->trans_type == 'credit' ? 'success' : ($transaction->trans_type == 'debit' ? 'danger' : '') }} small" style="font-size: 12px;">
                                                                                 {{ ucfirst($transaction->trans_type) }}
                                                                             </span>
